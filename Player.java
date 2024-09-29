@@ -15,7 +15,7 @@ public class Player {
 		return name;
 	}
 	// a getter method to get the cards from the player's hands
-	public  ArrayList<Card> getcards() {
+	public  ArrayList<Card> getHand() {
 		return hand;
 	}
 	// this method will add the cards onto the players hand
@@ -28,25 +28,31 @@ public class Player {
 		hand.remove ( card) ;
 	}
 	
+	public int getSize(){
+		return hand.size();
+		
+	}
+	
+	
 	// this method will compare the current card with the next card of the same player
 	// if they are the same , it removes both of them
-	public void matchingcards(Card that) {
+	public void matchingcards() {
 		for ( int i =0 ; i < hand.size(); i ++) {
 			
 			boolean matched = false;
 			
-			for ( int j =1 ; j<hand.size() ; j ++) {
+			for ( int j =1+i ; j<hand.size() ; j ++) {
 				
-				if( hand.get(i).equals(hand.get(j))) {
-					hand.remove(i);
+				if( hand.get(i).getvalue() == hand.get(j).getvalue()) {
 					hand.remove(j);
+					hand.remove(i);
+					i--;
 					matched = true;
 					break;
-				} else {
-					continue;
 				}
-			
 			}
+			
+			
 	    }
 	}
 	
@@ -79,6 +85,14 @@ public class Player {
 	}
 }
 
+	
+	
+				
+		
+	
+		
+		
+	
 	
 	
 				
