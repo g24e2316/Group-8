@@ -9,8 +9,11 @@ public class Deck {
 		
 		for ( int i =0 ; i < 4 ; i ++ ) {         // looping though faces
 			for ( int k =1 ; k <=11 ; k ++ ) {   // looping though values
-				 
-				cards.add(new Card (i ,k )); // i add a new type of object of the face (i) and value(k)
+				if(k==11 & i ==3) { 
+				cards.add(new Card (i ,k ));
+				} else if (k!=11) {
+					cards.add(new Card(i,k));
+				}// i add a new type of object of the face (i) and value(k)
 			
 			}
 		}
@@ -23,6 +26,7 @@ public class Deck {
 	public ArrayList<Card> getCards () {
 		return cards;
 	}
+	
 	// this part i saw on the internet , feel free to modify
     public String toString() {
         StringBuilder sb = new StringBuilder();
