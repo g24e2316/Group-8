@@ -37,7 +37,8 @@ public class Deck {
 	public List<Card> Distribute (int n) {
 		List<Card> bunch = new ArrayList<>();
 		
-		for (int i =0 ; i < n && getsize() !=0; i ++ ) {
+		for (int i =0 ; i < n && getsize() !=0; i ++ )
+		{
 				bunch.add(cards.remove(0));
 		}
 		return bunch;
@@ -55,5 +56,4 @@ public class Deck {
         }
         return sb.toString();
     }
-    
 }	
