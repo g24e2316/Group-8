@@ -8,11 +8,11 @@ public class Hand
 	private int handSize;
 	private Player player;
 	
-	public Hand(String name)
+	public Hand(ArrayList<Card> hand)
 	{
-		this.name = name;
 		this.changingCard = null;;
 		this.handSize = 0;
+		this.hand = hand;
 	}
 	
 	public void add(Card card) //to insert a card that has been passed to the player
@@ -22,19 +22,20 @@ public class Hand
 		
 	}
 	
-	public void remove(int pos)	//for removing a card at the specified position in the players hand
+	public void remove(Card card)	//for removing a card at the specified position in the players hand
 	{
-		if((pos<= hand.size()) && (pos>0))
+		if(!isEmpty())
 		{
-			hand.remove(pos);
+			hand.remove(card);
 			this.handSize--;
 		}
 	}
 	
 	public void swap(Card card)
 	{
-		this.hand = player.getHand();
 		this.changingCard = card;
+		
+		hand.remove(changingCard);
 		
 	}
 	

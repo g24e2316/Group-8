@@ -7,5 +7,6 @@ public class Program
         GameFlow game = new GameFlow();
         game.playersMethod();
 		game.handingCardsMethod();
+		game.play();
     } // main
 }

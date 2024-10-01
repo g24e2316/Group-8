@@ -94,6 +94,18 @@ public class GameFlow
 	
 	public void play()
 	{
-		//while(
+		Hand hand = new Hand(players[1].getHand());
+		//while()
+		System.out.println("Which card would you like to give to the next player?");
+		System.out.println("Face (0 - Clubs, 1 - diamonds, 2 - hearts, 3 - spades): ");
+		int facePos = in.nextInt();
+		
+		System.out.println("Number (enter 1 if you wish to select Ace): ");
+		int numPos = in.nextInt();
+		
+		Card card = new Card(facePos, numPos);
+		
+		hand.swap(card);
+		
 	}
 }	
