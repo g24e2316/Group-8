@@ -16,14 +16,28 @@ public class GameFlow
 	
 	public void playersMethod()
 	{
-		System.out.println("There can only be two to five players in this game");
-		System.out.println ("Enter the number of players");
-		numplayers= in.nextInt();
+		while (true) //emsures that only between 2 and 5 players are entered
+		{
+			System.out.println("There can only be two to five players in this game.");
+			System.out.println ("Enter the number of players: ");
+			numplayers = in.nextInt();
+			
+			if(numplayers<2 || numplayers >5) //if the number of players is invalid, we ask them to enter again
+			{
+				continue;
+			}
+			
+			else
+			{
+				break;
+			}
+		}
+		
 		
 		players = new Player[numplayers]; // this  will store the array of player objects
 		
 		// a for loop to populate the player array
-		for ( int i =0 ; i < players.length ; i ++ )
+		for (int i =0 ; i < players.length ; i ++ )
 		{
 			players[i] = new Player ("Player" +( i+1));
 		}
@@ -76,5 +90,10 @@ public class GameFlow
 				players[i].matchingcards(); // Remove matching cards from each player's hand
 				System.out.println("Player " + (i + 1) + " hand after removing matching cards: " + players[i].getHand() + "\n");
             }
+	}
+	
+	public void play()
+	{
+		while(
 	}
 }	

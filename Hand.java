@@ -3,20 +3,23 @@ import java.util.*;
 public class Hand
 {
 	private ArrayList<Card> hand;
-	private int cardTotal;
+	private Card changingCard;
 	private String name;
 	private int handSize;
+	private Player player;
 	
 	public Hand(String name)
 	{
 		this.name = name;
-		this.cardTotal = 0;
+		this.changingCard = null;;
 		this.handSize = 0;
 	}
 	
-	public void insert(Card card) //to insert a card that has been passed to the player
+	public void add(Card card) //to insert a card that has been passed to the player
 	{
+		hand.add(card);
 		this.handSize++;
+		
 	}
 	
 	public void remove(int pos)	//for removing a card at the specified position in the players hand
@@ -30,6 +33,8 @@ public class Hand
 	
 	public void swap(Card card)
 	{
+		this.hand = player.getHand();
+		this.changingCard = card;
 		
 	}
 	
@@ -60,14 +65,9 @@ public class Hand
 		return this.name;
 	}
 	
-	public int getHandTotal()
-	{
-		return this.cardTotal;
-	}
-	
 	/*public String toString()
 	{
 		
-	}/*
+	}*/
 }
 	

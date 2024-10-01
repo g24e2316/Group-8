@@ -6,7 +6,8 @@ public class Player {
 	// a constructor that has parameters
 	// will set the name
 	// will set the hand to a new arraylist
-	public Player( String name ) {
+	public Player( String name )
+	{
 		this.name = name;
 		this.hand = new ArrayList<>();
 	}
@@ -16,7 +17,7 @@ public class Player {
 		return this.name;
 	}
 	// a getter method to get the cards from the player's hands
-	public  ArrayList<Card> getHand()
+	public ArrayList<Card> getHand()
 	{
 		return this.hand;
 	}
@@ -67,13 +68,14 @@ public class Player {
 			anotherplayer.addcards(card);
 		}
 	}
+	
 	// this method check if the player has the jack of spades card
 	// but before it makes sure that its the last card the player is left with
 	// its giving loser
 
 	public boolean Loser()
 	{
-		if ( hand.size() == 1)
+		if (hand.size() == 1)
 		{
 			Card lastCard = hand.get(0); 
             return lastCard.toString().equalsIgnoreCase("Jack of Spades");
