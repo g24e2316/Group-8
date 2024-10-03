@@ -1,6 +1,14 @@
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.List;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-public class GameFlow
+
+
+public class GameFlow extends JPanel
 {
 	private Deck deck;
 	private Player [] players;
@@ -12,7 +20,48 @@ public class GameFlow
 	public GameFlow()
 	{
 		deck = new Deck();
+		JFrame window = new JFrame() ;
+		window.setTitle("EKASI JACK");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setResizable(true);
+		window.setSize(100,100);
+		
+		
+		//this handles the imageicon at the top left corner
+		ImageIcon logo = new ImageIcon("logo.png");
+		window.setIconImage(logo.getImage());
+		window.getContentPane().setBackground(Color.GREEN);
+		
+		// this handles buttons,i dont know how to center them
+		JPanel panel = new JPanel(new FlowLayout());
+		
+		JButton start = new JButton("Start");
+		JButton exit = new JButton("EXIT");
+		panel.add(start);
+		panel.add(exit);
+		window.add(panel , BorderLayout.SOUTH);
+	
+		start.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"HOORAH");
+			}
+		});
+		exit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // Exit the application
+            }
+        });
+		window.setLocationRelativeTo(null);
+		window.setVisible(true);
+	
+	}// yho i dont know why its not drawing the image
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Image card = new ImageIcon(getClass().getResource("./cards/2-C.png")).getImage();
+		g.drawImage(card,20,20,110,154,null);
 	}
+	
 	
 	public void playersMethod()
 	{
