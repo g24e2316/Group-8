@@ -24,43 +24,83 @@ public class GameFlow extends JPanel
 		window.setTitle("EKASI JACK");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
-		window.setSize(100,100);
-		
+		window.setSize(500,500);
+		window.setLocationRelativeTo(null);
+		window.setVisible(true);
 		
 		//this handles the imageicon at the top left corner
 		ImageIcon logo = new ImageIcon("logo.png");
 		window.setIconImage(logo.getImage());
-		window.getContentPane().setBackground(Color.GREEN);
+		//window.getContentPane().setBackground(Color.GREEN);
 		
-		// this handles buttons,i dont know how to center them
-		JPanel panel = new JPanel(new FlowLayout());
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.setBackground(Color.GREEN);
+		window.add(panel);
 		
-		JButton start = new JButton("Start");
+		// buttons
+		JPanel buttons = new JPanel();
+		buttons.setLayout(new BoxLayout(buttons,BoxLayout.Y_AXIS));
+		JButton start = new JButton ( "START");
 		JButton exit = new JButton("EXIT");
-		panel.add(start);
-		panel.add(exit);
-		window.add(panel , BorderLayout.SOUTH);
-	
-		start.addActionListener(new ActionListener() {
+		start.setAlignmentX(Component.CENTER_ALIGNMENT);
+		exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		buttons.add(Box.createVerticalGlue()); 
+        buttons.add(start);
+		buttons.add(Box.createVerticalGlue()); 
+		buttons.add(Box.createRigidArea(new Dimension(200, 100)));
+		buttons.add(exit);
+        buttons.add(Box.createVerticalGlue());
+		
+        panel.add(buttons,BorderLayout.SOUTH);
+		window.getContentPane().setBackground(Color.GREEN);
+		window.add(panel);
+		
+		//for the text
+		JLabel welcome = new JLabel("EKASI JACK",JLabel.CENTER);
+		welcome.setFont( new Font ("Serif",Font.BOLD,100));
+		welcome.setForeground(Color.RED);
+		welcome.setBackground(Color.LIGHT_GRAY);
+		welcome.setOpaque(true);
+		panel.add(welcome,BorderLayout.CENTER);
+		
+		//for the buttons to actually do something
+		start.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"HOORAH");
+				JOptionPane.showMessageDialog(window,"Only 2 or more players can play this game");
+				gamewindow();
 			}
 		});
 		exit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Exit the application
-            }
-        });
-		window.setLocationRelativeTo(null);
-		window.setVisible(true);
-	
-	}// yho i dont know why its not drawing the image
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Image card = new ImageIcon(getClass().getResource("./cards/2-C.png")).getImage();
-		g.drawImage(card,20,20,110,154,null);
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
 	}
+		
+		
+	public void gamewindow() {
+		JFrame game = new JFrame();
+		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		game.setResizable(true);
+		game.setSize(500,500);
+		game.getContentPane().setBackground(Color.BLACK);
+		game.setLocationRelativeTo(null);
+		//game.setVisible(true);
+		
+		ImageIcon logo2 = new ImageIcon("logo.png");
+		game.setIconImage(logo2.getImage());
+	
+		
+		// now for the graphics
+		JPanel gamepanel = new JPanel();
+	
+		
+	}
+	
+		
+	
 	
 	
 	public void playersMethod()
@@ -68,7 +108,7 @@ public class GameFlow extends JPanel
 		while (true) //emsures that only between 2 and 5 players are entered
 		{
 			System.out.println("There can only be two to five players in this game.");
-			System.out.println ("Enter the number of players: ");
+			
 			numplayers = in.nextInt();
 			
 			if(numplayers<2 || numplayers >5) //if the number of players is invalid, we ask them to enter again
@@ -77,9 +117,10 @@ public class GameFlow extends JPanel
 			}
 			
 			else
-			{
+			{  JoptionPane.showMessageDialog("There can only be 2 to 5 players");
 				break;
 			}
+			game.setVisible(true);
 		}
 		
 		
