@@ -99,17 +99,17 @@ public class GameFlow
 			{
 				Hand hand = new Hand(players[x-1].getHand());
 				
-				System.out.println("Player " + x + ": " + players[x-1].getHand() + "\n");
+				System.out.println("\nPlayer " + x + ": " + players[x-1].getHand() + "\n");
 				System.out.println("Which card would you like to give to the next player?");
 				System.out.println("Face (0 - Clubs, 1 - diamonds, 2 - hearts, 3 - spades): ");
 				int facePos = in.nextInt();
 				
-				System.out.println("Number (enter 1 if you wish to select Ace): ");
+				System.out.println("Number (1 - Ace, 11 - Jack): ");
 				int numPos = in.nextInt();
 				
-				Card card = new Card(facePos, numPos);
+				Card card = new Card(facePos, numPos);		//create a new  card variable that the player wants to pass on.
 				
-				if(x == players.length)
+				if(x == players.length)		//hands the chosen card to the next player in the game
 				{
 					hand.swap(card, players[0]);
 				}
@@ -122,11 +122,13 @@ public class GameFlow
 				//System.out.println("Player " + x + players[x-1].getHand() + "\n");
 			}
 			
-			for(int i =0; i<players.length; i++)
+			for(int i =0; i<players.length; i++)	//if a player has only 1 card left and that card is a jack of spades, they loose and the game ends.
 			{
+				players[i].matchingcards();
 				if((players[i].getSize() == 1) && (players[i].getHand().get(0).getvalue() == 11))
 				{
 					ans = false;
+					System.out.println("The game is over and Player " + (i+1) + " lost.");
 				}
 			}
 			
