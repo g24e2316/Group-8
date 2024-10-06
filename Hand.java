@@ -8,35 +8,23 @@ public class Hand
 	private int handSize;
 	private Player player;
 	
-	public Hand(ArrayList<Card> hand)
+	public Hand(ArrayList<Card> handx)
 	{
-		this.changingCard = null;;
 		this.handSize = 0;
-		this.hand = hand;
+		this.hand = handx;
 	}
 	
 	public void add(Card card) //to insert a card that has been passed to the player
 	{
 		hand.add(card);
 		this.handSize++;
-		
 	}
+
 	
-	public void remove(Card card)	//for removing a card at the specified position in the players hand
+	public void swap(Card card, Player nextPlayer)
 	{
-		if(!isEmpty())
-		{
-			hand.remove(card);
-			this.handSize--;
-		}
-	}
-	
-	public void swap(Card card)
-	{
-		this.changingCard = card;
-		
-		hand.remove(changingCard);
-		
+		this.hand.add(card);
+		nextPlayer.getHand().add(card);
 	}
 	
 	public boolean isEmpty() //checks if the hand is finished
@@ -49,12 +37,6 @@ public class Hand
 		return false;
 	}
 	
-	public boolean bothEqual(Hand other) //i don't think i neeed this method so i will probably take it out
-	{
-		Hand otherhand = other;
-		return true;
-		//if(this.
-	}
 	
 	public int getHandSize()
 	{
@@ -66,9 +48,9 @@ public class Hand
 		return this.name;
 	}
 	
-	/*public String toString()
+	public String toString()
 	{
-		
-	}*/
+		return "Cards: [" + this.hand + "]\n";
+	}
 }
 	
