@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 
 
 
-public class GameFlow extends JPanel
+public class GameFlow 
 {
 	private Deck deck;
 	private Player [] players;
@@ -20,87 +20,12 @@ public class GameFlow extends JPanel
 	public GameFlow()
 	{
 		deck = new Deck();
-		JFrame window = new JFrame() ;
-		window.setTitle("EKASI JACK");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(true);
-		window.setSize(500,500);
-		window.setLocationRelativeTo(null);
-		window.setVisible(true);
 		
-		//this handles the imageicon at the top left corner
-		ImageIcon logo = new ImageIcon("logo.png");
-		window.setIconImage(logo.getImage());
-		//window.getContentPane().setBackground(Color.GREEN);
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(new BorderLayout());
-		panel.setBackground(Color.GREEN);
-		window.add(panel);
-		
-		// buttons
-		JPanel buttons = new JPanel();
-		buttons.setLayout(new BoxLayout(buttons,BoxLayout.Y_AXIS));
-		JButton start = new JButton ( "START");
-		JButton exit = new JButton("EXIT");
-		start.setAlignmentX(Component.CENTER_ALIGNMENT);
-		exit.setAlignmentX(Component.CENTER_ALIGNMENT);
-		buttons.add(Box.createVerticalGlue()); 
-        buttons.add(start);
-		buttons.add(Box.createVerticalGlue()); 
-		buttons.add(Box.createRigidArea(new Dimension(200, 100)));
-		buttons.add(exit);
-        buttons.add(Box.createVerticalGlue());
-		
-        panel.add(buttons,BorderLayout.SOUTH);
-		window.getContentPane().setBackground(Color.GREEN);
-		window.add(panel);
-		
-		//for the text
-		JLabel welcome = new JLabel("EKASI JACK",JLabel.CENTER);
-		welcome.setFont( new Font ("Serif",Font.BOLD,100));
-		welcome.setForeground(Color.RED);
-		welcome.setBackground(Color.LIGHT_GRAY);
-		welcome.setOpaque(true);
-		panel.add(welcome,BorderLayout.CENTER);
-		
-		//for the buttons to actually do something
-		start.addActionListener(new ActionListener () {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(window,"Only 2 or more players can play this game");
-				gamewindow();
-			}
-		});
-		exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
+
 		
 	}
 		
-		
-	public void gamewindow() {
-		JFrame game = new JFrame();
-		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		game.setResizable(true);
-		game.setSize(500,500);
-		game.getContentPane().setBackground(Color.BLACK);
-		game.setLocationRelativeTo(null);
-		//game.setVisible(true);
-		
-		ImageIcon logo2 = new ImageIcon("logo.png");
-		game.setIconImage(logo2.getImage());
-	
-		
-		// now for the graphics
-		JPanel gamepanel = new JPanel();
-	
-		
-	}
-	
-		
-	
 	
 	
 	public void playersMethod()
